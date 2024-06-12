@@ -21,10 +21,10 @@ class Sieve {
     // An approximation for the length of array we need to find the nth prime is:
     //   Pn ≤ nlog(nlog(n)) for n ≥ 6.
     // 20 is a fallback limit for n < 6 that will cover the range 0..5, else use the estimate.
-    var limit = n < 6 ? 20 : Math.floor(n*(Math.log(n*Math.log(n))))
+    let limit = n < 6 ? 20 : Math.floor(n*(Math.log(n*Math.log(n))))
 
     // Fill primes array as all `true` values. 0 and 1 indices will be false since we start at A[2].
-    let A = Array(limit).fill(true);
+    let A = [...Array(limit).keys()].map(i => true);
     A[0] = A[1] = false;
 
     // Rather than looping to √n, loop to our Pn limit estimation.
